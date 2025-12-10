@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Real Estate</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Real Estate Admin</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <div class="container">
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="projects">Projects</button>
+                <button class="tab-btn" data-tab="clients">Clients</button>
+                <button class="tab-btn" data-tab="contacts">Contact Forms</button>
+                <button class="tab-btn" data-tab="newsletters">Newsletters</button>
+            </div>
+
+            <div id="projectsTab" class="tab-content active">
+                <h2 class="admin-title">Project Management</h2>
+                <form id="projectForm" class="admin-form">
+                    <div class="form-group">
+                        <input type="text" id="projectName" placeholder="Project Name" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="projectDescription" placeholder="Project Description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="file-label">
+                            <input type="file" id="projectImageFile" accept="image/*" class="file-input">
+                            <span class="file-button">Choose Project Image</span>
+                        </label>
+                        <div class="image-preview-container" id="projectImagePreview" style="display: none;">
+                            <img id="projectImagePreviewImg" style="max-width: 100%; max-height: 200px;">
+                            <button type="button" class="btn-crop" id="projectCropBtn">Crop Image</button>
+                        </div>
+                        <input type="hidden" id="projectImage" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Project</button>
+                </form>
+                <div class="admin-list" id="projectsList"></div>
+            </div>
+
+            <div id="clientsTab" class="tab-content">
+                <h2 class="admin-title">Client Management</h2>
+                <form id="clientForm" class="admin-form">
+                    <div class="form-group">
+                        <input type="text" id="clientName" placeholder="Client Name" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="clientDescription" placeholder="Client Description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="clientDesignation" placeholder="Client Designation" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="file-label">
+                            <input type="file" id="clientImageFile" accept="image/*" class="file-input">
+                            <span class="file-button">Choose Client Image</span>
+                        </label>
+                        <div class="image-preview-container" id="clientImagePreview" style="display: none;">
+                            <img id="clientImagePreviewImg" style="max-width: 100%; max-height: 200px;">
+                            <button type="button" class="btn-crop" id="clientCropBtn">Crop Image</button>
+                        </div>
+                        <input type="hidden" id="clientImage" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Client</button>
+                </form>
+                <div class="admin-list" id="clientsList"></div>
+            </div>
+
+            <div id="contactsTab" class="tab-content">
+                <h2 class="admin-title">Contact Form Details</h2>
+                <div class="admin-list" id="contactsList"></div>
+            </div>
+
+            <div id="newslettersTab" class="tab-content">
+                <h2 class="admin-title">Subscribed Email Addresses</h2>
+                <div class="admin-list" id="newslettersList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cropModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Crop Image</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="cropper-container">
+                    <img id="cropImage" style="max-width: 100%;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="cancelCrop">Cancel</button>
+                <button type="button" class="btn-primary" id="applyCrop">Apply Crop</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
+
